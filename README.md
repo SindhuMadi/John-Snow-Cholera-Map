@@ -6,7 +6,7 @@
 
 After going through the requirements, it is clear that we need 4 charts over all – Map, timeline chart and 2 bar graphs. So, I have initially started with this design.
 
-![](RackMultipart20201005-4-1nmyb10_html_c3529fb6a2b460a5.png)
+![alt text](https://github.com/SindhuMadi/Project1/blob/main/copy1.png)
 
 The initial design consists of map with streets and pumps locations along with locations of deaths and a legend for the map on its right. To the right of it, the timeline chart. Below the map, a bar graph showing the number of deaths by age group. Below the timeline chart, another bar graph showing the number of deaths by gender. After implementing this design, I have noticed that, user have to scroll up and down to observe the deaths on a particular day in each of these charts, which can be selected by clicking on the data points on the timeline chart. To avoid this issue, I had to slightly modified the design as shown below.
 
