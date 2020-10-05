@@ -94,11 +94,6 @@ var deaths_gender = {};
                                       .attr("cx",function(d,i){return d.x*30;})
                                       .attr("cy",function(d,i){return height - d.y*30;})
                                       .attr("r","4")
-                                      // .attr("x",function(d,i){return d.x*30;})
-                                      // .attr("y",function(d,i){return height - d.y*30;})
-                                      // .attr("height","3")
-                                      // .attr("width","6")
-
                                       .attr("stroke","black")
                                       .attr("stroke-width",1)
                                       .attr("fill",function(d,i){
@@ -139,7 +134,6 @@ var deaths_gender = {};
         d3.csv("pumps.csv")
               .get(function(error, data){
 
-                //console.log(data);
               chartGroup1.selectAll("circle.pumps")
                 .data(data)
                 .enter().append("circle")
@@ -147,7 +141,7 @@ var deaths_gender = {};
                         .attr("cx",function(d,i){return d.x*30;})
                         .attr("cy",function(d,i){return height - d.y*30;})
                         .attr("r","7")
-                        .attr("fill","#52E532")
+                        .attr("fill","#c51b7d")
                         .attr("stroke","black");
 
           });
@@ -249,9 +243,7 @@ var deaths_gender = {};
                         .attr("height","32")
                         .attr("width","17")
                         .attr("dy", "1em")
-                      //  .attr("stroke-width","1")
-                      //  .attr("stroke","black")
-                        .attr("fill","#FF8943");
+                        .attr("fill","#a1d76a");
 
               chartGroup1.append("text")
                         .attr("transform", "rotate(65)")
@@ -265,10 +257,8 @@ var deaths_gender = {};
                         .text("BREWERY");
 
 
-
-
-
 var new_data;
+
 
   function deaths_by_index(start_index = 0, end_index = deaths_data.length-1){
     new_data = deaths_data.slice(start_index, end_index);
@@ -393,7 +383,7 @@ var formatMonth = d3.timeFormat('%d-%b');
                                       chartGroup5.selectAll(".legend_2").remove();
                                       chartGroup5.selectAll(".legend_1a").remove();
 
-                                      var gender_colors = ["#52E532","#44EDED","#FF8943",'#f1a340','#998ec3'];
+                                      var gender_colors = ["#c51b7d","#44EDED","#a1d76a",'#f1a340','#998ec3'];
                                       var gender_legend = ["Pump","Work House","Brewery","Male","Female"];
 
                                       chartGroup5.append("rect")
@@ -435,7 +425,7 @@ var formatMonth = d3.timeFormat('%d-%b');
 
                                   chartGroup5.selectAll(".legend_1a").remove();
 
-                                  var colors = ["#52E532","#44EDED","#FF8943",'#d73027','#fc8d59','#fee090','#e0f3f8','#91bfdb','#4575b4'];
+                                  var colors = ["#c51b7d","#44EDED","#a1d76a",'#d73027','#fc8d59','#fee090','#e0f3f8','#91bfdb','#4575b4'];
 
                                   var age = ["Pump","Work House","Brewery","0-10","11-20","21-40","41-60","61-80",">80"];
 
@@ -836,7 +826,8 @@ d3.csv("deathdays.csv")
                           //.style("text-decoration", "underline")
                           .text("Gender");
 
-update_bar();
+
+                          update_bar();
 
 
 });
