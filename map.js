@@ -547,6 +547,15 @@ d3.csv("deathdays.csv")
           .style("text-decoration", "underline")
           .text("Timeline Graph - Date vs Number of Deaths");
 
+          chartGroup.append("g").append("text")
+              .attr("x", (width / 2))
+              .attr("y", -40)
+              .attr("class","title")
+              .attr("text-anchor", "middle")
+              .style("font-size", "18px")
+              .style("text-decoration", "underline")
+              .text("Timeline Graph - Date vs Number of Deaths");
+
     chartGroup.selectAll("circle")
         .data(data)
         .enter().append("circle")
@@ -605,7 +614,7 @@ d3.csv("deathdays.csv")
 
                 function brushed() {
                   var selection = d3.event.selection;
-                    //console.log(selection);
+
                     x.domain(selection.map(x2.invert, x2));
                     var extent = selection.map(x2.invert, x2);
                     data_updated = data.filter(function(d){return d.date>=extent[0]&& d.date<= extent[1];});
@@ -663,9 +672,6 @@ d3.csv("deathdays.csv")
 
                 };
 
-
-
-
                 var chartGroup3 = svg3.append("g")
                                   .attr("transform","translate(100,80)");
 
@@ -674,7 +680,7 @@ d3.csv("deathdays.csv")
 
               window.update_bar = function (start_index = 0, end_index = deaths_data.length-1){
                         new_data = deaths_data.slice(start_index, end_index);
-
+                        var tooltip3 = d3.select("body").append("div").style("opacity","0").style("position","absolute");
                         nested_data = d3.nest()
                                         .key(function(d) { return d.age; })
                                         .key(function(d) { return d.gender; })
@@ -739,7 +745,29 @@ d3.csv("deathdays.csv")
                                         .attr("y", function(d) { return y1(d.value); })
                                         .attr("width", xSubgroup.bandwidth())
                                         .attr("height", function(d) { return height - y1(d.value); })
-                                        .attr("fill", function(d) { return color(d.key); });
+                                        .attr("fill", function(d) { return color(d.key); })
+                                        .on("mouseover", function(d){
+                                          // d3.select(this)
+                                          //     .transition()
+                                          //       .attr("r","6");
+                                          tooltip3.style("opacity","1")
+                                                     .style("left",d3.event.pageX+"px")
+                                                     .style("top",d3.event.pageY+"px")
+                                                     .style("background","lightsteelblue")
+                                                     .style("border-radius","8px")
+                                                     .style("padding","2px");
+
+                                                tooltip3.html("Number of Deaths:"+d.value);
+                                        })
+                                        .on("mouseout", function(d){
+                                          // d3.select(this)
+                                          //   .transition()
+                                          //     .attr("r","3");
+                                            tooltip3.style("opacity","0");
+                                              this.style.fill=color(d.key);
+                                        //  deaths_by_index();
+                                      });
+
 
                 };
 
