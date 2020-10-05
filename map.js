@@ -743,6 +743,9 @@ d3.csv("deathdays.csv")
 
                 };
 
+
+                  update_bar();
+
                 //Legends and Axes labels for Bar Chart
                 chartGroup3.append("g").append("text")
                               .attr("x", 200)
@@ -827,7 +830,7 @@ d3.csv("deathdays.csv")
                           .text("Gender");
 
 
-                          update_bar();
+
 
 
 });
