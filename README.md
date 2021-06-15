@@ -1,4 +1,3 @@
-# Project1
 
  **Project 1 – John Snow Cholera Map using D3 - Documentation**
 
